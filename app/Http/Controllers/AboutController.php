@@ -11,7 +11,9 @@ class AboutController extends Controller
      */
     public function index()
     {
-        //
+        $greetings = 'Welkom gast';
+
+        return view('about', compact('greetings'));
     }
 
     /**
