@@ -12,8 +12,12 @@ class AboutController extends Controller
     public function index()
     {
         $greetings = 'Welkom gast';
+        $aboutInfo = [
+            'MovieTracker helpt je om films bij te houden.',
+            'Je kunt films zoeken en je favoriete films bewaren.',
+        ];
 
-        return view('about', compact('greetings'));
+        return view('about', compact('greetings', 'aboutInfo'));
     }
 
     /**
