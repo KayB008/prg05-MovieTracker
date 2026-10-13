@@ -1,7 +1,13 @@
 @props([
-    'active' => false
+    'active' => false,
+    'link' => ''
 ])
 
-<a {{ $attributes }} style="color: {{ $active ? 'red' : 'blue' }}; text-decoration: {{ $active ? 'underline' : 'none' }}; margin: 5px;">
+@php
+    $active = request()->routeIs($link);
+@endphp
+
+<a {{ $attributes->class(['nav-button', 'active' => $active]) }}
+   href="{{ $link }}">
     {{ $slot }}
 </a>
