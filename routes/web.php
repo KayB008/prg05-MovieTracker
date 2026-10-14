@@ -7,7 +7,7 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [MovieController::class, 'index'])->name('movie');
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('about', [AboutController::class, 'index'])->name('about');

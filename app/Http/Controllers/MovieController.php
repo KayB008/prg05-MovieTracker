@@ -12,15 +12,19 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movie = new Movie();
-        $movie->created_by_user_id = 1;
-        $movie->title = 'karel';
-        $movie->description = 'karel en zijn supervriendjes';
-        $movie->release_year = 2023;
-        $movie->poster_url = 'https://img.magnific.com/vrije-photo/grappige-kat-3d-illustratie_183364-80359.jpg?semt=ais_hybrid&w=740&q=80';
-        $movie->save();
+//        $movie = new Movie();
+//        $movie->created_by_user_id = 1;
+//        $movie->title = 'karel';
+//        $movie->description = 'karel en zijn supervriendjes';
+//        $movie->release_year = 2023;
+//        $movie->poster_url = 'https://img.magnific.com/vrije-photo/grappige-kat-3d-illustratie_183364-80359.jpg?semt=ais_hybrid&w=740&q=80';
 
-        return view('movie', compact('movie'));
+        
+        $movies = Movie::all();
+
+
+        $greetings = 'Welcome on my Movies page';
+        return view('movies.movie', compact('movies', 'greetings'));
     }
 
     /**
