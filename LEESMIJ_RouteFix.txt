@@ -1,0 +1,20 @@
+MovieTracker - routenamen reparatie
+====================================
+
+De zip bevat uitsluitend de aangepaste bestanden met hun originele mappenstructuur.
+Plaats deze bestanden in de root van je huidige Laravel-project en overschrijf
+bestaande bestanden. Verwijder daarna het oude bestand:
+resources/views/movies/movie.blade.php
+
+Wat is aangepast:
+- routes/web.php: / gaat naar /movies, resource heet voortaan movies.
+- MovieController.php: index() gebruikt view('movies.index') i.p.v. view(route(...)).
+- resources/views/movies/index.blade.php: de oude movie.blade.php krijgt de conventionele naam index.
+- resources/views/movies/create.blade.php: @csrf toegevoegd aan het POST-formulier.
+
+Zelf controleren in je Laravel-project:
+php artisan route:clear
+php artisan route:list --path=movies
+
+Let op: show.blade.php is nog leeg; edit/update/destroy zijn nog niet uitgewerkt.
+Die functionaliteit is bewust buiten deze reparatie gehouden.

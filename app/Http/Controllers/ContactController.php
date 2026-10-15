@@ -29,7 +29,13 @@ class ContactController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the request
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'release_year' => 'required|integer|min:0',
+            'poster_url' => 'required|url'
+        ]);
     }
 
     /**

@@ -12,27 +12,11 @@ class MovieController extends Controller
      */
     public function index()
     {
-//        $movie = new Movie();
-//        $movie->created_by_user_id = 1;
-//        $movie->title = 'karel';
-//        $movie->description = 'karel en zijn supervriendjes';
-//        $movie->release_year = 2023;
-//        $movie->poster_url = 'https://img.magnific.com/vrije-photo/grappige-kat-3d-illustratie_183364-80359.jpg?semt=ais_hybrid&w=740&q=80';
-
-        
         $movies = Movie::all();
 
 
         $greetings = 'Welcome on my Movies page';
-        return view('movies.movie', compact('movies', 'greetings'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return view('movies.index', compact('movies', 'greetings'));
     }
 
     /**
@@ -40,7 +24,31 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string|max:1000',
+            'release_year' => 'required|integer|min:0',
+            'poster_url' => 'required|url'
+        ]);
+
+        $movie = new Movie();
+        $movie->created_by_user_id = 1;
+        $movie->title = $request->input('title');
+        $movie->description = $request->input('description');
+        $movie->release_year = $request->input('release_year');
+        $movie->poster_url = $request->input('poster_url');
+
+        $movie->save();
+
+        return redirect()->route('movies.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('movies.create');
     }
 
     /**
@@ -48,7 +56,8 @@ class MovieController extends Controller
      */
     public function show(Movie $movie)
     {
-        //
+        $movie = Movie::find($movie->id);
+        return view('movies.show', compact('movie'));
     }
 
     /**

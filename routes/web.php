@@ -7,12 +7,12 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [MovieController::class, 'index'])->name('movie');
+Route::get('/', fn () => redirect()->route('movies.index'));
 
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('about', [AboutController::class, 'index'])->name('about');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
-Route::get('movie', [MovieController::class, 'index'])->name('movie');
+Route::resource('movies', MovieController::class);
 
 
 Route::get('/dashboard', function () {

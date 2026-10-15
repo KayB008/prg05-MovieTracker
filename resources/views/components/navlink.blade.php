@@ -8,6 +8,6 @@
 @endphp
 
 <a {{ $attributes->class(['nav-button', 'active' => $active]) }}
-   href="{{ $link }}">
+   href="{{ route($link) }}">
     {{ $slot }}
 </a>
