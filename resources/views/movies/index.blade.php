@@ -27,6 +27,10 @@
                     <h3>{{ $movie->title }}</h3>
 
                     <p>{{ $movie->description }}</p>
+
+                    <a href="{{ route('movies.show', $movie) }}" class="button">
+                        Bekijk film
+                    </a>
                 </div>
             </x-card>
         @endforeach

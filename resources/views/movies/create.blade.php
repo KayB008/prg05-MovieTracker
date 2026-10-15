@@ -31,7 +31,7 @@
             <span class="text-red-500">{{ $message }}</span>
             @enderror
         </div>
-        <button type="submit" name="submit">Create Movie</button>
+        <button type="submit" name="submit" class="button">Create Movie</button>
     </form>
 
 </x-layout>
