@@ -15,7 +15,7 @@ class MovieController extends Controller
         $movies = Movie::all();
 
 
-        $greetings = 'Welcome on my Movies page';
+        $greetings = 'Welcome on the Movies page';
         return view('movies.index', compact('movies', 'greetings'));
     }
 
