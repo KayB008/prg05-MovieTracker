@@ -213,6 +213,17 @@ body {
     font-weight: 700;
 }
 
+.movie-genre {
+    align-self: flex-start;
+    margin-bottom: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
 .movie-content p {
     flex: 1;
     margin-bottom: 16px;
@@ -363,35 +374,4 @@ body {
 
 .movie-details-actions form {
     margin: 0;
-}
-
-/* ===== RESPONSIVE ===== */
-
-@media (max-width: 650px) {
-    .page-content {
-        padding: 24px 16px;
-    }
-
-    .movie-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .movie-form {
-        padding: 20px;
-    }
-
-    .movie-details {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .movie-details-poster {
-        max-width: 240px;
-        margin: 0 auto;
-    }
-
-    .movie-details-title {
-        font-size: 1.6rem;
-    }
 }

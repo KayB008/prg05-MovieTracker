@@ -27,6 +27,7 @@ class MovieController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:1000',
+            'genre' => 'required|string|max:100',
             'release_year' => 'required|integer|min:0',
             'poster_url' => 'required|url'
         ]);
@@ -36,6 +37,7 @@ class MovieController extends Controller
         $movie->title = $request->input('title');
         $movie->description = $request->input('description');
         $movie->release_year = $request->input('release_year');
+        $movie->genre = $request->input('genre');
         $movie->poster_url = $request->input('poster_url');
 
         $movie->save();

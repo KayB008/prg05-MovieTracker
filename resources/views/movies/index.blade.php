@@ -26,6 +26,10 @@
 
                     <h3>{{ $movie->title }}</h3>
 
+                    @if($movie->genre)
+                        <span class="movie-genre">{{ $movie->genre }}</span>
+                    @endif
+
                     <p>{{ $movie->description }}</p>
 
                     <a href="{{ route('movies.show', $movie) }}" class="button">
