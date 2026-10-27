@@ -1,6 +1,6 @@
 <x-layout title="About us">
 
-    <h1>About Us</h1>
+    <h1 class="page-title">About Us</h1>
 
     @foreach($aboutInfo as $info)
         <x-card>

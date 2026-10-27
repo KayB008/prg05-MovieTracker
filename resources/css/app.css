@@ -2,21 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== BASIS ===== */
 
 body {
     background: #f8fafc;
     color: #1f2937;
 }
 
-body > main {
+.page-content {
     max-width: 1200px;
     margin: 0 auto;
     padding: 36px 20px;
 }
 
-body > main > h1,
-body > main > h2,
-.page-title {
+/* Titels */
+
+.page-title,
+.section-title {
     width: fit-content;
     margin: 0 auto 24px;
     padding-bottom: 8px;
@@ -26,16 +28,17 @@ body > main > h2,
     text-align: center;
 }
 
-body > main > h1,
 .page-title {
     font-size: 2rem;
 }
 
-body > main > h2 {
+.section-title {
     font-size: 1.5rem;
 }
 
-body > nav {
+/* ===== NAVIGATIE ===== */
+
+.navbar {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -44,13 +47,33 @@ body > nav {
     background: #111827;
 }
 
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.nav-auth form {
+    margin: 0;
+}
+
 .nav-button {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
     padding: 10px 14px;
+    border: none;
     border-radius: 8px;
+    background: transparent;
     color: #e5e7eb;
+    font-family: inherit;
+    font-size: 1rem;
     font-weight: 600;
+    line-height: 1.5;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .nav-button:hover {
@@ -67,6 +90,8 @@ body > nav {
     outline: 2px solid #f59e0b;
     outline-offset: 3px;
 }
+
+/* ===== KNOPPEN ===== */
 
 .button {
     display: inline-block;
@@ -111,6 +136,8 @@ body > nav {
     outline-offset: 3px;
 }
 
+/* ===== ALGEMENE PAGINA'S ===== */
+
 .intro {
     max-width: 720px;
     margin: 0 auto 32px;
@@ -121,18 +148,25 @@ body > nav {
     line-height: 1.6;
 }
 
-.card {
-    margin: 12px 0;
-    padding: 20px;
+.card,
+.movie-form,
+.movie-details {
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     background: white;
+}
+
+.card {
+    margin: 12px 0;
+    padding: 20px;
 }
 
 .max-w-400 {
     max-width: 400px;
     margin: 12px auto;
 }
+
+/* ===== MOVIES OVERZICHT ===== */
 
 .movie-grid {
     display: grid;
@@ -173,7 +207,7 @@ body > nav {
 }
 
 .movie-content h3 {
-    margin: 0 0 10px;
+    margin-bottom: 10px;
     color: #111827;
     font-size: 1.25rem;
     font-weight: 700;
@@ -190,6 +224,8 @@ body > nav {
     align-self: flex-start;
 }
 
+/* ===== CREATE MOVIE ===== */
+
 .movie-create {
     max-width: 620px;
     margin: 0 auto;
@@ -201,14 +237,15 @@ body > nav {
     text-align: center;
 }
 
+.movie-form,
+.movie-details {
+    box-shadow: 0 6px 24px rgba(17, 24, 39, 0.06);
+}
+
 .movie-form {
     display: grid;
     gap: 20px;
     padding: 28px;
-    border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    background: white;
-    box-shadow: 0 6px 24px rgba(17, 24, 39, 0.06);
 }
 
 .form-field {
@@ -217,8 +254,8 @@ body > nav {
 }
 
 .form-field label {
-    font-weight: 600;
     color: #374151;
+    font-weight: 600;
 }
 
 .movie-form input,
@@ -241,7 +278,6 @@ body > nav {
 .movie-form textarea:focus {
     border-color: #f59e0b;
     outline: 2px solid rgba(245, 158, 11, 0.22);
-    outline-offset: 0;
     box-shadow: none;
 }
 
@@ -267,19 +303,7 @@ body > nav {
     text-decoration: underline;
 }
 
-.form-submit {
-    padding: 12px 20px;
-    border: 0;
-    border-radius: 8px;
-    background: #f59e0b;
-    color: #111827;
-    font-weight: 700;
-    cursor: pointer;
-}
-
-.form-submit:hover {
-    background: #d97706;
-}
+/* ===== SHOW MOVIE ===== */
 
 .movie-details {
     display: grid;
@@ -288,10 +312,7 @@ body > nav {
     max-width: 900px;
     margin: 0 auto;
     padding: 30px;
-    border: 1px solid #e5e7eb;
     border-radius: 14px;
-    background: white;
-    box-shadow: 0 6px 24px rgba(17, 24, 39, 0.06);
 }
 
 .movie-details-poster {
@@ -310,7 +331,7 @@ body > nav {
 
 .movie-details-title {
     width: fit-content;
-    margin: 0 0 16px;
+    margin-bottom: 16px;
     padding-bottom: 8px;
     border-bottom: 2px solid #f59e0b;
     color: #111827;
@@ -342,4 +363,35 @@ body > nav {
 
 .movie-details-actions form {
     margin: 0;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 650px) {
+    .page-content {
+        padding: 24px 16px;
+    }
+
+    .movie-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .movie-form {
+        padding: 20px;
+    }
+
+    .movie-details {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .movie-details-poster {
+        max-width: 240px;
+        margin: 0 auto;
+    }
+
+    .movie-details-title {
+        font-size: 1.6rem;
+    }
 }

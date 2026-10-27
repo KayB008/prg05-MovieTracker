@@ -1,5 +1,5 @@
 <x-layout title="Home">
 
-    <h1>{{$greetings}}</h1>
+    <h1 class="page-title">{{$greetings}}</h1>
 
 </x-layout>

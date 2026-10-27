@@ -1,13 +1,13 @@
 <x-layout title="Movies">
 
-    <h1>{{ $greetings }}</h1>
+    <h1 class="page-title">{{ $greetings }}</h1>
 
     <p class="intro">
         Ontdek je volgende favoriete film en laat je inspireren door onze collectie vol spannende verhalen,
         indrukwekkende personages en onvergetelijke momenten!
     </p>
 
-    <h2>Movies</h2>
+    <h2 class="section-title">Movies</h2>
 
     <div class="movie-grid">
         @foreach($movies as $movie)

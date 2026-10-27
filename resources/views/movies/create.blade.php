@@ -69,7 +69,7 @@
                     Cancel
                 </a>
 
-                <button type="submit" class="button form-submit">
+                <button type="submit" class="button">
                     Create Movie
                 </button>
             </div>

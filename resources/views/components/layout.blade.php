@@ -16,7 +16,7 @@
 
 @include('components.navigation')
 
-<main>
+<main class="page-content">
     {{$slot}}
 </main>
 </body>
