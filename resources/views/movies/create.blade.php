@@ -38,6 +38,19 @@
             </div>
 
             <div class="form-field">
+                <label for="genre">Genre</label>
+                <input type="text"
+                       name="genre"
+                       id="genre"
+                       value="{{ old('genre') }}"
+                       required>
+
+                @error('genre')
+                <span class="form-error">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <div class="form-field">
                 <label for="release_year">Release Year</label>
                 <input type="number"
                        name="release_year"
