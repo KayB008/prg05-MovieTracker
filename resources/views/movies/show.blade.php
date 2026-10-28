@@ -12,9 +12,11 @@
                 {{ $movie->title }}
             </h1>
 
-            <h2 class="movie-details-genre">
-                {{ $movie->genre }}
-            </h2>
+            @if($movie->genre)
+                <h2 class="movie-details-genre">
+                    {{ $movie->genre->genre }}
+                </h2>
+            @endif
 
             <p class="movie-details-year">
                 Release Year: {{ $movie->release_year }}

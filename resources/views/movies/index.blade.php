@@ -27,7 +27,9 @@
                     <h3>{{ $movie->title }}</h3>
 
                     @if($movie->genre)
-                        <span class="movie-genre">{{ $movie->genre }}</span>
+                        <span class="movie-genre">
+                            {{ $movie->genre->genre }}
+                        </span>
                     @endif
 
                     <p>{{ $movie->description }}</p>

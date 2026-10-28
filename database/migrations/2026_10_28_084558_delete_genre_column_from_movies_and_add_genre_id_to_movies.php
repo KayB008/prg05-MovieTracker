@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::table('movies', function (Blueprint $table) {
             $table->unsignedBigInteger('genre_id')->nullable();
-            $table->foreign('genre_id')->references('id')->on('genre');
+            $table->foreign('genre_id')->references('id')->on('genres');
 
             $table->dropColumn('genre');
         });

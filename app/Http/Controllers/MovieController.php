@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Movie;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 
 class MovieController extends Controller
@@ -12,7 +13,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::all();
+        $movies = Movie::with('genre')->get();
 
 
         $greetings = 'Welcome on the Movies page';
@@ -22,6 +23,7 @@ class MovieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
+
     public function store(Request $request)
     {
         $request->validate([
@@ -32,18 +34,27 @@ class MovieController extends Controller
             'poster_url' => 'required|url'
         ]);
 
+        // Zoek het genre of maak een nieuw genre aan
+        $genre = Genre::firstOrCreate([
+            'genre' => trim($request->input('genre'))
+        ]);
+
+        // Maak de film aan
         $movie = new Movie();
         $movie->created_by_user_id = 1;
         $movie->title = $request->input('title');
         $movie->description = $request->input('description');
         $movie->release_year = $request->input('release_year');
-        $movie->genre = $request->input('genre');
         $movie->poster_url = $request->input('poster_url');
+
+        // Koppel het genre aan de film
+        $movie->genre_id = $genre->id;
 
         $movie->save();
 
         return redirect()->route('movies.index');
     }
+
 
     /**
      * Show the form for creating a new resource.
