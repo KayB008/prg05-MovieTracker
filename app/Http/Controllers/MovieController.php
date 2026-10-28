@@ -11,13 +11,39 @@ class MovieController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $movies = Movie::with('genre')->get();
+        $validated = $request->validate([
+            'search' => 'nullable|string|max:255',
+            'genre' => 'nullable|integer|exists:genres,id'
+        ]);
 
+        $search = trim($validated['search'] ?? '');
+        $selectedGenre = $validated['genre'] ?? null;
+
+        $movies = Movie::with('genre')
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query->where('title', 'like', "%{$search}%")
+                        ->orWhere('description', 'like', "%{$search}%");
+                });
+            })
+            ->when($selectedGenre, function ($query) use ($selectedGenre) {
+                $query->where('genre_id', $selectedGenre);
+            })
+            ->get();
+
+        $genres = Genre::orderBy('genre')->get();
 
         $greetings = 'Welcome on the Movies page';
-        return view('movies.index', compact('movies', 'greetings'));
+
+        return view('movies.index', compact(
+            'movies',
+            'genres',
+            'search',
+            'selectedGenre',
+            'greetings'
+        ));
     }
 
     /**

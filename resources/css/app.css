@@ -168,6 +168,74 @@ body {
 
 /* ===== MOVIES OVERZICHT ===== */
 
+/* Zoeken en filteren */
+
+.movie-filters {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.movie-search-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 360px;
+}
+
+.movie-search-input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    color: #111827;
+}
+
+.movie-search-input:focus {
+    border-color: #f59e0b;
+    outline: 2px solid #fef3c7;
+    box-shadow: none;
+}
+
+.genre-filters {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+}
+
+.genre-filter {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.genre-filter:hover {
+    background: #fde68a;
+}
+
+.genre-filter.active {
+    background: #f59e0b;
+    color: #111827;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    padding: 24px;
+    text-align: center;
+    color: #6b7280;
+}
+
 .movie-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
