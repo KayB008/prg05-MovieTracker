@@ -26,6 +26,7 @@
                 {{ $movie->description }}
             </p>
 
+
             <div class="movie-details-actions">
 
                 <a href="{{ route('movies.index') }}"
@@ -33,16 +34,28 @@
                     Back to Movies
                 </a>
 
-                <form action="{{ route('movies.destroy', $movie) }}"
-                      method="POST">
-                    @csrf
-                    @method('DELETE')
+                @can('update', $movie)
+                    <a href="{{ route('movies.edit', $movie) }}"
+                       class="button">
+                        Edit Movie
+                    </a>
+                @endcan
 
-                    <button type="submit"
-                            class="button button-danger">
-                        Delete Movie
-                    </button>
-                </form>
+                @can('delete', $movie)
+                    <form action="{{ route('movies.destroy', $movie) }}"
+                          method="POST">
+
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit"
+                                class="button button-danger">
+                            Delete Movie
+                        </button>
+
+                    </form>
+                @endcan
+
             </div>
         </div>
     </div>
