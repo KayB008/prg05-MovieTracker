@@ -12,6 +12,9 @@ Route::get('/', fn() => redirect()->route('movies.index'));
 Route::get('home', [HomeController::class, 'index'])->name('home');
 Route::get('about', [AboutController::class, 'index'])->name('about');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
+Route::post('movies/{movie}/toggle-featured', [MovieController::class, 'toggleFeatured'])
+    ->middleware('auth')
+    ->name('movies.toggleFeatured');
 Route::resource('movies', MovieController::class)
     ->middlewareFor(
         ['create', 'store', 'edit', 'update', 'destroy'],

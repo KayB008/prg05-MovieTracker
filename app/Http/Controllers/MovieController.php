@@ -151,4 +151,37 @@ class MovieController extends Controller
 
         return redirect()->route('movies.index');
     }
+
+
+    function toggleFeatured(Movie $movie)
+    {
+        // Controleer of gebruiker maker of admin is
+        Gate::authorize('toggleFeatured', $movie);
+
+        // Controleer de 3-films-regel bij aanzetten
+        if (Auth::user()->role !== 'admin') {
+
+            $movieCount = Movie::where(
+                'created_by_user_id',
+                Auth::id()
+            )->count();
+
+            if ($movieCount < 3) {
+                return back()->with(
+                    'error',
+                    'Je moet minimaal 3 films hebben toegevoegd om aanbevelingen van je films aan en uit te kunnen zetten.'
+                );
+            }
+        }
+
+        // Wissel tussen aan en uit
+        $movie->is_featured = !$movie->is_featured;
+        $movie->save();
+
+        return back()->with(
+            'success',
+            'Aanbevelingsstatus aangepast.'
+        );
+    }
+
 }

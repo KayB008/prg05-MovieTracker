@@ -10,6 +10,18 @@
 
     <h2 class="section-title">Movies</h2>
 
+    @if(session('error'))
+        <p class="movie-feedback movie-feedback-error">
+            {{ session('error') }}
+        </p>
+    @endif
+
+    @if(session('success'))
+        <p class="movie-feedback movie-feedback-success">
+            {{ session('success') }}
+        </p>
+    @endif
+
     <div class="movie-filters">
 
         <!-- Zoekbalk -->
@@ -85,6 +97,12 @@
 
                     <h3>{{ $movie->title }}</h3>
 
+                    @if($movie->is_featured)
+                        <span class="featured-badge">
+                            ★ Aanbevolen
+                        </span>
+                    @endif
+
                     @if($movie->genre)
                         <span class="movie-genre">
                             {{ $movie->genre->genre }}
@@ -97,6 +115,19 @@
                        class="button">
                         Bekijk film
                     </a>
+
+                    @can('toggleFeatured', $movie)
+                        <form action="{{ route('movies.toggleFeatured', $movie) }}"
+                              method="POST"
+                              class="featured-form">
+
+                            @csrf
+
+                            <button type="submit" class="button button-secondary">
+                                {{ $movie->is_featured ? 'Aanbeveling uitzetten' : 'Aanbevelen' }}
+                            </button>
+                        </form>
+                    @endcan
 
                 </div>
 
