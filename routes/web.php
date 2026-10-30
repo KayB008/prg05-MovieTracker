@@ -5,6 +5,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn() => redirect()->route('movies.index'));
@@ -20,6 +21,15 @@ Route::resource('movies', MovieController::class)
         ['create', 'store', 'edit', 'update', 'destroy'],
         'auth'
     );
+Route::middleware('auth')->group(function () {
+
+    Route::get('/admin', [AdminController::class, 'index'])
+        ->name('admin.index');
+
+    Route::post('/admin/users/{user}/toggle-admin', [AdminController::class, 'toggleAdmin'])
+        ->name('admin.users.toggle');
+
+});
 
 
 Route::get('/dashboard', function () {

@@ -474,3 +474,80 @@ body {
 .movie-details-actions form {
     margin: 0;
 }
+
+/* ===== ADMIN PANEL ===== */
+
+.admin-panel {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.admin-list {
+    display: grid;
+    gap: 12px;
+    margin-bottom: 36px;
+}
+
+.admin-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px 18px;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    background: white;
+}
+
+.admin-user {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+}
+
+.admin-user span {
+    color: #6b7280;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+}
+
+.admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.admin-role {
+    font-weight: 700;
+}
+
+.admin-switch {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 44px;
+    height: 24px;
+    padding: 3px;
+    border: none;
+    border-radius: 20px;
+    background: #9ca3af;
+    cursor: pointer;
+}
+
+.admin-switch.is-active {
+    justify-content: flex-end;
+    background: #f59e0b;
+}
+
+.admin-switch-knob {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: white;
+}
+
+.admin-self {
+    color: #6b7280;
+    font-size: 0.8rem;
+}

@@ -5,6 +5,9 @@
 
     @auth
         <x-navlink link="movies.create">Create Movie</x-navlink>
+        @if(auth()->user()->role === 'admin')
+            <x-navlink link="admin.index">Admin Panel</x-navlink>
+        @endif
     @endauth
 
     <div class="nav-auth">
